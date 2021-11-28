@@ -6,13 +6,9 @@ import json
 
 views = Blueprint('views', __name__)
 
-@views.route('/home')
-def index():
-    return render_template("home.html", user=current_user)
-
-@views.route('/', methods=['GET', 'POST'])
+@views.route('/home', methods=['GET', 'POST'])
 @login_required
-def home():
+def index():
     if request.method == 'POST':
         note = request.form.get('note')
 
@@ -23,8 +19,22 @@ def home():
             db.session.add(new_note)
             db.session.commit()
             flash('Note added!', category='success')
+    return render_template("home.html", user=current_user)
 
+@views.route('/', methods=['GET', 'POST'])
+@login_required
+def home():
     return render_template("index.html", user=current_user)
+
+@views.route('/fitness-regime', methods=['GET', 'POST'])
+@login_required
+def fitness_regime():
+    return render_template("regime.html", user=current_user)
+
+@views.route('/nearby-gyms', methods=['GET', 'POST'])
+@login_required
+def nearby_gyms():
+    return render_template("gyms.html", user=current_user)
 
 
 @views.route('/delete-note', methods=['POST'])

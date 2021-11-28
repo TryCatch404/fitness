@@ -1,0 +1,29 @@
+/* Style buttons */
+.help{
+  text-align: center;
+}
+
+/* Dashed border */
+hr.dashed {
+  border-top: 1px dashed #bbb;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.location-btn {
+  background-color: #743bed; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 16px 20px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 12px;
+  width: 14%;
+}
+
+/* Darker background on mouse-over */
+.location-btn:hover {
+  background-color: Grey;
+}

@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% block title %}Nearby Gyms{% endblock %} {% block content
+        %}
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url({{ url_for('static', filename='images/gym-img.jpg') }});">
+            <div class="wrap-regime p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41 mt-5">
+					Nearby <em>Gyms</em>
+				</span>
+                <form method="POST" class="login100-form validate-form p-b-33 p-t-5">
+                    <div>
+                        <div class="help mt-3 pb-0">
+                            <small class="form-text text-muted">
+                                Click button, to automatically generate your location.
+                            </small>
+                        </div>
+                        <div class="container-login100-form-btn mt-2">
+                            <button class="location-btn">
+                                {#                                <i class="fas fa-map-marker-alt"></i>#}
+                                <i class="fa fa-location-arrow fa-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <hr class="dashed ">
+
+                    <div class="row g-3 p-4">
+                        <div class="help pb-0">
+                            <small class="form-text text-muted">
+                                Or manually enter your address.
+                            </small>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="validationCustom03" placeholder="Street" required>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="validationCustom03" placeholder="Zip" required>
+
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="validationCustom03" placeholder="Country" required>
+
+                            </div>
+                        </div>
+                        <div class="container-login100-form-btn m-t-32">
+                            <button  type="submit" class="login100-form-btn">
+                                Locate Gyms
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="dropDownSelect1"></div>
+{% endblock %}

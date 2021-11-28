@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
     />
     <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      crossorigin="anonymous"
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            crossorigin="anonymous"
     />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!--FOR LOGIN - SIGNUP-->
-  <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--FOR LOGIN - SIGNUP-->
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icons/favicon.ico') }}"/>
 
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/animate/animate.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/css-hamburgers/hamburgers.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/animsition/css/animsition.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/select2/select2.min.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/daterangepicker/daterangepicker.css') }}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/util.css') }}">
-	<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/main.css') }}">
-<!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+    <!--===============================================================================================-->
 
-  <!--FOR HOME-->
-      <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+    <!--FOR HOME-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='assets/css/font-awesome.css') }}">
     <link rel="stylesheet" href= "{{ url_for('static',filename='assets/css/main-style.css') }}">
+    <link rel="stylesheet" href= "{{ url_for('static',filename='assets/css/location.css') }}">
 
     <title>{% block title %}Home{% endblock %}</title>
-  </head>
-  <body>
+</head>
+<body>
 
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
@@ -59,14 +62,14 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">DY<em> FITNESS</em></a>
+                    <a href="/" class="logo">DY<em> FITNESS</em></a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         {% if user.is_authenticated %}
                             <li class="scroll-to-section"><a id="home" class="active" href="/">Home</a></li>
-                            <li class="scroll-to-section"><a href="#schedule">Generate Fitness Regime</a></li>
-                            <li class="scroll-to-section"><a href="#nearby_gymss">Nearby GYMs</a></li>
+                            <li class="scroll-to-section"><a href="/fitness-regime">Generate Fitness Regime</a></li>
+                            <li class="scroll-to-section"><a href="/nearby-gyms">Nearby GYMs</a></li>
                             <li class="scroll-to-section"><a href="#call-to-action">About</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
                             <li class="scroll-to-section"><a id="logout" href="/logout">Logout</a></li>
@@ -108,67 +111,67 @@
 {#      </div>#}
 {#    </nav>#}
 
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+{% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
     'error' %}
     <div class="alert alert-danger alter-dismissable fade show" role="alert">
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-    {% else %}
+{% else %}
     <div class="alert alert-success alter-dismissable fade show" role="alert">
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
+{% endif %} {% endfor %} {% endif %} {% endwith %}
 
-    <div>{% block content %} {% endblock %}</div>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
+<div>{% block content %} {% endblock %}</div>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+></script>
 
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='index.js') }}"
-    ></script>
+<script
+        type="text/javascript"
+        src="{{ url_for('static', filename='index.js') }}"
+></script>
 
-  <!--FOR LOGIN - SIGNUP-->
-  <!--===============================================================================================-->
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--FOR LOGIN - SIGNUP-->
 <!--===============================================================================================-->
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/animsition/js/animsition.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/jquery/jquery-3.2.1.min.js') }}"></script>
 <!--===============================================================================================-->
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/bootstrap/js/popper.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/animsition/js/animsition.min.js') }}"></script>
 <!--===============================================================================================-->
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/select2/select2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/bootstrap/js/popper.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <!--===============================================================================================-->
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/daterangepicker/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/select2/select2.min.js') }}"></script>
 <!--===============================================================================================-->
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/countdowntime/countdowntime.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/daterangepicker/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.js') }}"></script>
 <!--===============================================================================================-->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='vendor/countdowntime/countdowntime.js') }}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 
-  <!--FOR HOME-->
-  <!-- jQuery -->
+<!--FOR HOME-->
+<!-- jQuery -->
 <script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery-2.1.0.min.js') }}"></script>
 
 <!-- Bootstrap -->
@@ -184,5 +187,8 @@
 
 <!-- Global Init -->
 <script type="text/javascript" src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
-  </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
 </html>
