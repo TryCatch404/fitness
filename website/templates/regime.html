@@ -6,61 +6,97 @@
 				<span class="login100-form-title p-b-41 mt-5">
 					Fitness <em>Regime</em>
 				</span>
-                <form method="POST" class="login100-form validate-form p-b-33 p-t-5">
-                    <div class="row g-3 p-4">
-                        <div class="col-6">
-                            <label for="customRange1" class="form-label">Height</label>
-                            <input type="range" class="form-range" id="customRange1">
-                            <small class="form-text text-muted">
-                                Input height in inches.
-                            </small>
-                        </div>
-                        <div class="col-6">
-                            <label for="customRange1" class="form-label">Weight</label>
-                            <input type="range" class="form-range" id="customRange1">
-                            <small class="form-text text-muted">
-                                Input weight in kilograms.
-                            </small>
-                        </div>
-                        <div class="row g-3 p-4">
-                            <div class="col-3">
-                            </div>
-                            <div class="col-6">
-                                <select class="form-select">
-                                    <option>Gender</option>
-                                </select>
-
-                                {#                                <label class="radio-inline"><input type="radio" name="male" checked>Male</label>#}
-                                {#                                <label class="radio-inline"><input type="radio" name="female">Female</label>#}
-                                {#                                <label class="radio-inline"><input type="radio" name="other">Other</label>#}
-                            </div>
+                {% if type %}
+                    <form method="POST" class="login100-form validate-form p-b-33 p-t-5">
+                        <div class="help mt-3 pb-0">
+                            <h5>
+                                Click <em>Generate</em>, to get your fitness regime according to your
+                                details.
+                            </h5><br/>
                         </div>
                         <div class="row g-3 p-4">
                             <div class="col-6">
-                                <select class="form-select">
-                                    <option>How Active Are You?</option>
-                                </select>
+                                <label for="value-height" class="form-label">Height</label>
+                                <input type="range" class="form-range" min="3" max="11" step="0.1"
+                                       name="height" id="height-range">
+                                <small class="form-text text-muted">
+                                    <p>Value: <span id="value-height"></span></p>
+                                    Input height is in feets-inches scale.
+                                </small>
                             </div>
                             <div class="col-6">
-                                <select class="form-select">
-                                    <option>Your Age Range?</option>
-                                </select>
+                                <label for="weight-range" class="form-label">Weight</label>
+                                <input type="range" class="form-range" min="20" max="200" step="0.5"
+                                       name="weight" id="weight-range">
+                                <small class="form-text text-muted">
+                                    <p>Value: <span id="value-weight"></span></p>
+                                    Input weight is in kilograms-grams scale.
+                                </small>
+                            </div>
+                            <div class="row g-3 p-4">
+                                <div class="col-3">
+                                </div>
+                                <div class="col-6">
+                                    <label for="gender">Select Gender:</label>
+                                    <select class="form-select" id="gender" name="gender">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+
+                                    {#                                <label class="radio-inline"><input type="radio" name="male" checked>Male</label>#}
+                                    {#                                <label class="radio-inline"><input type="radio" name="female">Female</label>#}
+                                    {#                                <label class="radio-inline"><input type="radio" name="other">Other</label>#}
+                                </div>
+                            </div>
+                            <div class="row g-3 p-4">
+                                <div class="col-6">
+                                    <label for="active">How Active Are You?</label>
+                                    <select class="form-select" id="active" name="active">
+                                        <option value="lightly">Lightly Active</option>
+                                        <option value="moderately">Moderately Active</option>
+                                        <option value="very">Very Active</option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="age">Your Age Range?</label>
+                                    <select class="form-select" id="age" name="age">
+                                        <option value="teens">Teens</option>
+                                        <option value="twenties">20s</option>
+                                        <option value="thirties">30s</option>
+                                        <option value="forties">40s</option>
+                                        <option value="above_50">Above 50</option>
+                                    </select>
+                                </div>
+                            </div>
+                            {#                    <div class="wrap-input100 validate-input" data-validate = "Enter Email">#}
+                            {#                        <input class="regime100" type="text" name="email" placeholder="Email">#}
+                            {#                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>#}
+                            {#                    </div>#}
+
+
+                            <div class="container-login100-form-btn m-t-32">
+                                <button  type="submit" class="login100-form-btn">
+                                    Generate
+                                </button>
                             </div>
                         </div>
-                        {#                    <div class="wrap-input100 validate-input" data-validate = "Enter Email">#}
-                        {#                        <input class="regime100" type="text" name="email" placeholder="Email">#}
-                        {#                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>#}
-                        {#                    </div>#}
-
-
-                        <div class="container-login100-form-btn m-t-32">
-                            <button  type="submit" class="login100-form-btn">
-                                Generate
-                            </button>
+                        <div class="help mt-3 pb-0">
+                            <h5>
+                                Fitness Regime.
+                            </h5><br/>
                         </div>
-                    </div>
-                </form>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                {{ regime.diet }}
+                            </li>
+                        </ul>
+                    </form>
+                    {% else %}
+                    <h1>hoooo</h1>
+                {% endif %}
             </div>
+
         </div>
     </div>
 

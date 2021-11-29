@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note
+from .models import Note, Regime
 from . import db
 import json
 
@@ -29,7 +29,33 @@ def home():
 @views.route('/fitness-regime', methods=['GET', 'POST'])
 @login_required
 def fitness_regime():
-    return render_template("regime.html", user=current_user)
+    type = True
+    regime = Regime.query.filter().first()
+    if request.method == 'POST':
+        type = False
+        height = request.form.get('height')
+        weight = request.form.get('weight')
+        gender = request.form.get('gender')
+        active = request.form.get('active')
+        age = request.form.get('age')
+        # print("Your body mass index is: ", round(weight / (height * height), 2))
+        regime = Regime.query.filter(Regime.from_height<=height,
+                                     Regime.to_height>=height,
+                                     Regime.from_weight>=weight,
+                                     Regime.to_weight>=weight,
+                                     Regime.gender==gender,
+                                     Regime.active==active,
+                                     Regime.age==age,).first()
+        if regime:
+            print(request.form)
+            print(regime.id)
+            print('obj',regime)
+            print(regime.from_height)
+
+        else:
+            print('Nothing!')
+
+    return render_template("regime.html", user=current_user, regime=regime, type=type)
 
 @views.route('/nearby-gyms', methods=['GET', 'POST'])
 @login_required
