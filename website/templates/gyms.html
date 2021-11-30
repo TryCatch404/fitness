@@ -6,53 +6,107 @@
 				<span class="login100-form-title p-b-41 mt-5">
 					Nearby <em>Gyms</em>
 				</span>
-                <form method="POST" class="login100-form validate-form p-b-33 p-t-5">
-                    <div>
-                        <div class="help mt-3 pb-0">
-                            <h5>
-                                Click <em>Locator</em>, to automatically generate your location.
-                            </h5>
-                        </div><br/>
-                        <div class="container-login100-form-btn mt-2">
-                            <button class="location-btn">
-                                {#                                <i class="fas fa-map-marker-alt"></i>#}
-                                <i class="fa fa-location-arrow fa-lg"></i>
-                            </button>
+                {% if type %}
+                    <form method="POST" class="login100-form validate-form p-b-33 p-t-5">
+                        <div>
+                            <div class="help mt-3 pb-0">
+                                <h5>
+                                    Click <em>Locator</em>, to automatically generate your location.
+                                </h5>
+                            </div><br/>
+                            <div class="container-login100-form-btn mt-2">
+                                <button class="location-btn" onclick="getLocation()">
+                                    <i class="fa fa-location-arrow fa-lg"></i>
+                                </button>
+                            </div>
+                            <div class="row g-3 p-4">
+                                <div class="col-3">
+                                </div>
+                                <div class="col-3">
+                                    <p id="lat" ></p>
+                                </div>
+                                <div class="col-3">
+                                    <p id="long"></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <hr class="dashed ">
+                        <hr class="dashed ">
 
-                    <div class="row g-3 p-4">
-                        <div class="help pb-0">
-                            <small class="form-text text-muted">
-                                Or manually enter your address.
-                            </small>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <input type="text" class="form-control" id="validationCustom03" placeholder="Street" required>
+                        <div class="row g-3 p-4">
+                            <div class="help pb-0">
+                                <h5 class="form-text">
+                                    Or manually enter your address.
+                                </h5>
                             </div>
-                            <div class="col-6">
-                                <input type="text" class="form-control" id="validationCustom03" placeholder="Zip" required>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="street" placeholder="Street"
+                                           name="street">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="zip" placeholder="Zip"
+                                           name="zip">
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="city" placeholder="City"
+                                           name="city">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="country" placeholder="Country"
+                                           name="country">
+                                </div>
+                            </div>
+                            <div class="container-login100-form-btn m-t-32">
+                                <button type="submit" class="login100-form-btn">
+                                    Locate Gyms
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                {% else %}
+                    <form method="GET" class="login100-form validate-form p-b-33 p-t-5">
+                        {% if not msg %}
+                            <div class="help mt-3 pb-0">
+                                <h5>
+                                    Generated <em>Locations</em>, according to your
+                                    details.
+                                </h5><br/>
+                                <div class="row g-3 p-4">
+                                    <div class="col-3">
 
+                                    </div>
+                                    <div class="col-6">
+                                        <ol type="1" class="list-group list-group-flush">
+                                            {#                                            {% for location in locations %}#}
+                                            <li class="list-group-item">
+                                                <em>{{ locations.name }}</em>
+                                                <p>{{ locations.street }}, {{ locations.zip }}
+                                                    {{ locations.city }},{{ locations.country }}</p>
+                                            </li>
+                                            {#                                            {% endfor %}#}
+                                        </ol>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+                        {% else %}
+                            <div class="help mt-3 pb-0">
+                                <h5>
+                                    No <em>Results</em> found against your
+                                    query.
+                                </h5><br/>
                             </div>
-                            <div class="col-6">
-                                <input type="text" class="form-control" id="validationCustom03" placeholder="Country" required>
-
-                            </div>
-                        </div>
+                        {% endif %}
                         <div class="container-login100-form-btn m-t-32">
-                            <button  type="submit" class="login100-form-btn">
-                                Locate Gyms
-                            </button>
+                            <a href="/nearby-gyms">
+                                <button class="login100-form-btn">
+                                    Back To Locator
+                                </button>
+                            </a>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                {% endif %}
             </div>
         </div>
     </div>

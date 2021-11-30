@@ -36,15 +36,39 @@ class Age(enum.Enum):
 
 class Regime(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    from_height = db.Column(db.Integer)
-    to_height = db.Column(db.Integer)
-    from_weight = db.Column(db.Integer)
-    to_weight = db.Column(db.Integer)
+    from_height = db.Column(db.Float)
+    to_height = db.Column(db.Float)
+    from_weight = db.Column(db.Float)
+    to_weight = db.Column(db.Float)
     gender = db.Column(db.Enum(Gender))
     age = db.Column(db.Enum(Age))
     active = db.Column(db.Enum(Active))
-    diet = db.Column(db.String(10000))
-    excercise = db.Column(db.String(10000))
+    diet = db.relationship('Diet')
+    exercise = db.relationship('Exercise')
+    # diet = db.Column(db.String(10000))
+    # exercise = db.Column(db.String(10000))
+
+
+class Diet(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    data = db.Column(db.String(10000))
+    regime_id = db.Column(db.Integer, db.ForeignKey('regime.id'))
+
+class Exercise(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    data = db.Column(db.String(10000))
+    regime_id = db.Column(db.Integer, db.ForeignKey('regime.id'))
+
+class Locations(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(10000))
+    street = db.Column(db.String(10000))
+    zip = db.Column(db.String(10000))
+    city = db.Column(db.String(10000))
+    country = db.Column(db.String(10000))
+    long = db.Column(db.Float)
+    lat = db.Column(db.Float)
+
 
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -1,10 +1,11 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note, Regime
+from .models import Note, Regime, Locations
 from . import db
 import json
 
 views = Blueprint('views', __name__)
+
 
 @views.route('/home', methods=['GET', 'POST'])
 @login_required
@@ -21,15 +22,17 @@ def index():
             flash('Note added!', category='success')
     return render_template("home.html", user=current_user)
 
+
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
     return render_template("index.html", user=current_user)
 
+
 @views.route('/fitness-regime', methods=['GET', 'POST'])
 @login_required
 def fitness_regime():
-    type = True
+    type = msg = True
     regime = Regime.query.filter().first()
     if request.method == 'POST':
         type = False
@@ -38,29 +41,47 @@ def fitness_regime():
         gender = request.form.get('gender')
         active = request.form.get('active')
         age = request.form.get('age')
+
         # print("Your body mass index is: ", round(weight / (height * height), 2))
-        regime = Regime.query.filter(Regime.from_height<=height,
-                                     Regime.to_height>=height,
-                                     Regime.from_weight>=weight,
-                                     Regime.to_weight>=weight,
-                                     Regime.gender==gender,
-                                     Regime.active==active,
-                                     Regime.age==age,).first()
+        regime = Regime.query.filter(float(height) >= Regime.from_height,
+                                     Regime.to_height >= float(height),
+                                     float(weight) >= Regime.from_weight,
+                                     Regime.to_weight >= float(weight),
+                                     Regime.gender == gender,
+                                     Regime.active == active,
+                                     Regime.age == age, ).first()
         if regime:
-            print(request.form)
-            print(regime.id)
-            print('obj',regime)
-            print(regime.from_height)
-
+            msg = False
+            print('regime: ', regime)
         else:
-            print('Nothing!')
+            print('No Regime Found')
 
-    return render_template("regime.html", user=current_user, regime=regime, type=type)
+    return render_template("regime.html", user=current_user,
+                           regime=regime, type=type, msg=msg)
+
 
 @views.route('/nearby-gyms', methods=['GET', 'POST'])
 @login_required
 def nearby_gyms():
-    return render_template("gyms.html", user=current_user)
+    type = msg = True
+    # locations = Locations.query.filter().first()
+    # if request.method == 'POST':
+    #     type = False
+    #     latitude = request.form.get('latitude')
+    #     longitude = request.form.get('longitude')
+    #     street = request.form.get('street')
+    #     zip = request.form.get('zip')
+    #     city = request.form.get('city')
+    #     country = request.form.get('country')
+    #     print('req: ', request.form)
+    #     locations = Locations.query.filter().first()
+    #     if locations:
+    #         msg = False
+    #         print('location: ', locations)
+    #     else:
+    #         print('No location Found')
+    return render_template("gyms.html", user=current_user,
+                           type=type, msg=msg)
 
 
 @views.route('/delete-note', methods=['POST'])
