@@ -80,13 +80,13 @@
                                     </div>
                                     <div class="col-6">
                                         <ol type="1" class="list-group list-group-flush">
-                                            {#                                            {% for location in locations %}#}
-                                            <li class="list-group-item">
-                                                <em>{{ locations.name }}</em>
-                                                <p>{{ locations.street }}, {{ locations.zip }}
-                                                    {{ locations.city }},{{ locations.country }}</p>
-                                            </li>
-                                            {#                                            {% endfor %}#}
+                                            {% for location in locations %}
+                                                <li class="list-group-item">
+                                                    <em>{{ location.name }}</em>
+                                                    <p>{{ location.street }}, {{ location.zip }}
+                                                        {{ location.city }},{{ location.country }}</p>
+                                                </li>
+                                            {% endfor %}
                                         </ol>
                                     </div>
                                 </div>

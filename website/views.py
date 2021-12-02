@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note, Regime, Locations
+from .models import Regime, Locations
 from . import db
 import json
 import geopy.distance
@@ -10,22 +10,6 @@ import urllib.parse
 
 
 views = Blueprint('views', __name__)
-
-
-@views.route('/home', methods=['GET', 'POST'])
-@login_required
-def index():
-    if request.method == 'POST':
-        note = request.form.get('note')
-
-        if len(note) < 1:
-            flash('Note is too short!', category='error')
-        else:
-            new_note = Note(data=note, user_id=current_user.id)
-            db.session.add(new_note)
-            db.session.commit()
-            flash('Note added!', category='success')
-    return render_template("home.html", user=current_user)
 
 
 @views.route('/', methods=['GET', 'POST'])
@@ -70,8 +54,8 @@ def fitness_regime():
 def nearby_gyms():
     type = msg = True
     coords_1 = (0.0, 0.0)
+    locations = False
     try:
-        locations = Locations.query.filter().first()
         if request.method == 'POST':
             type = False
             latitude = request.form.get('latitude')
@@ -86,41 +70,26 @@ def nearby_gyms():
                 address = street + ' , ' + city  + ' , ' + country
                 url = 'https://nominatim.openstreetmap.org/search/' + urllib.parse.quote(address) +'?format=json'
                 response = requests.get(url).json()
-                print('ss',response)
                 if len(response) >= 1:
                     if response[0]["lat"] and response[0]["lon"]:
                         coords_1 = (response[0]["lat"], response[0]["lon"])
             points = Locations.query.filter().all()
-            print(points)
+            print('points',coords_1)
             points_list = {}
             for p in points:
                 coords_2 = (p.lat, p.long)
-                if coords_1 and coords_2:
+                if coords_2 and coords_1 != (0.0, 0.0):
                     points_list[p.id] = geopy.distance.geodesic(coords_1, coords_2).km
-
             top = sorted(points_list.items(), key=lambda x: x[1])
-            print(top)
-            print('req: ', request.form)
-            locations = Locations.query.limit(3).all()
+            ids = [x[0] for x in top[:3]]
+            locations = [Locations.query.filter_by(id=id).one() for id in ids]
+            # locations = Locations.query.limit(3).all()
             if locations:
                 msg = False
                 print('location: ', locations)
             else:
                 print('No location Found')
+        return render_template("gyms.html", user=current_user, locations=locations,
+                               type=type, msg=msg)
     except ValueError as e:
         print(e, "An exception occurred")
-    return render_template("gyms.html", user=current_user, locations=locations,
-                           type=type, msg=msg)
-
-
-@views.route('/delete-note', methods=['POST'])
-def delete_note():
-    note = json.loads(request.data)
-    noteId = note['noteId']
-    note = Note.query.get(noteId)
-    if note:
-        if note.user_id == current_user.id:
-            db.session.delete(note)
-            db.session.commit()
-
-    return jsonify({})
