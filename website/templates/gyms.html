@@ -7,35 +7,36 @@
 					Nearby <em>Gyms</em>
 				</span>
                 {% if type %}
-                    <form method="POST" class="login100-form validate-form p-b-33 p-t-5">
-                        <div>
-                            <div class="help mt-3 pb-0">
-                                <h5>
-                                    Click <em>Locator</em>, to automatically generate your location.
-                                </h5>
-                            </div><br/>
-                            <div class="container-login100-form-btn mt-2">
-                                <button class="location-btn" onclick="getLocation()">
-                                    <i class="fa fa-location-arrow fa-lg"></i>
-                                </button>
+                    <div class="login100-form validate-form p-b-33 p-t-5">
+                        <div class="help mt-3 pb-0">
+                            <h5>
+                                Click <em>Locator</em>, to automatically generate your Latitude/Longitude.
+                            </h5>
+                        </div><br/>
+                        <div class="container-login100-form-btn mt-2">
+                            <button class="location-btn" onclick="getLocation()">
+                                <i class="fa fa-location-arrow fa-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <hr class="dashed ">
+                    <form method="POST" class="login100-form validate-form p-b-33">
+                        <div class="row g-3 p-4">
+                            <div class="col-3">
                             </div>
-                            <div class="row g-3 p-4">
-                                <div class="col-3">
-                                </div>
-                                <div class="col-3">
-                                    <p id="lat" ></p>
-                                </div>
-                                <div class="col-3">
-                                    <p id="long"></p>
-                                </div>
+                            <div class="col-3">
+                                {#<label for="lat">Latitude</label>#}
+                                <input type="text" class="form-control" id="lat" placeholder="Latitude" name="latitude" readonly>
+                            </div>
+                            <div class="col-3">
+                                {#<label for="long">Longitude</label>#}
+                                <input type="text" class="form-control" id="long" placeholder="Longitude" name="longitude" readonly>
                             </div>
                         </div>
-                        <hr class="dashed ">
-
                         <div class="row g-3 p-4">
                             <div class="help pb-0">
                                 <h5 class="form-text">
-                                    Or manually enter your address.
+                                    Or <em>manually</em> enter your address.
                                 </h5>
                             </div>
                             <div class="row g-3">

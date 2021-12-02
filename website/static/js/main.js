@@ -5,14 +5,14 @@ function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
-    y.innerHTML = "Please! Try again..";
+    x.innerHTML = "Not Found";
+    y.innerHTML = "Not Found";
   }
 }
 
 function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude ;
-  y.innerHTML = "Longitude: " + position.coords.longitude;
+  x.value = position.coords.latitude ;
+  y.value = position.coords.longitude;
 }
 
 (function ($) {
