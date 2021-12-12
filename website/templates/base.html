@@ -76,8 +76,10 @@
                             <li class="scroll-to-section"><a id="home" class="active" href="/">Home</a></li>
                             <li class="scroll-to-section"><a href="/fitness-regime">Generate Fitness Regime</a></li>
                             <li class="scroll-to-section"><a href="/nearby-gyms">Nearby GYMs</a></li>
+							{% if url_for(request.endpoint) == '/' %}
                             <li class="scroll-to-section"><a href="#call-to-action">About</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
+							{% endif %}
                             <li class="scroll-to-section"><a id="logout" href="/logout">Logout</a></li>
                         {% else %}
                             <li class="scroll-to-section"><a id="login" href="/login">Login</a></li>

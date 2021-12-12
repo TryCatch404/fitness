@@ -10,6 +10,12 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    """
+        :function: login()
+        :description: To render login templates.
+        :parameters: None
+        :return: Template, if credentials match redirect to home.
+    """
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -37,6 +43,12 @@ def logout():
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
+    """
+        :function: sign_up()
+        :description: To render sign_up templates.
+        :parameters: None
+        :return: Template, store user credentials and login user.
+    """
     if request.method == 'POST':
         email = request.form.get('email')
         password1 = request.form.get('password1')

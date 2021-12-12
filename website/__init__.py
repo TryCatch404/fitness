@@ -36,7 +36,6 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
 
     from .models import User, Regime, Diet, Exercise, Locations
-    # Flask and Flask-SQLAlchemy initialization here
 
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ModelView(Regime, db.session))

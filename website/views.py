@@ -7,20 +7,30 @@ import geopy.distance
 import requests
 import urllib.parse
 
-
-
 views = Blueprint('views', __name__)
 
 
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
+    """
+        :function: home()
+        :description: To render home templates.
+        :parameters: None
+        :return: Template with current logged in user
+    """
     return render_template("index.html", user=current_user)
 
 
 @views.route('/fitness-regime', methods=['GET', 'POST'])
 @login_required
 def fitness_regime():
+    """
+        :function: regime()
+        :description: To render regime templates.
+        :parameters: None
+        :return: Template with current logged in user and regime according to query
+    """
     type = msg = True
     regime = Regime.query.filter().first()
     if request.method == 'POST':
@@ -52,6 +62,12 @@ def fitness_regime():
 @views.route('/nearby-gyms', methods=['GET', 'POST'])
 @login_required
 def nearby_gyms():
+    """
+            :function: nearby_gyms()
+            :description: To render nearby_gyms templates.
+            :parameters: None
+            :return: Template with current logged in user and gym locations according to entered long/lat info.
+        """
     type = msg = True
     coords_1 = (0.0, 0.0)
     locations = False
@@ -74,7 +90,6 @@ def nearby_gyms():
                     if response[0]["lat"] and response[0]["lon"]:
                         coords_1 = (response[0]["lat"], response[0]["lon"])
             points = Locations.query.filter().all()
-            print('points',coords_1)
             points_list = {}
             for p in points:
                 coords_2 = (p.lat, p.long)
